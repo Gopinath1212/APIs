@@ -14,17 +14,28 @@ class Test extends StatefulWidget {
 class _TestState extends State<Test> {
 
 
+  List<Department> list=[];
+
+
+  @override
+  void initState() {
+    list = widget.list;
+    setState(() {});
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var snapshot;
+
+    
     return Scaffold(
      body: ListView.builder(
-        itemCount: snapshot.data!.list,
+        itemCount: list.length,
         itemBuilder: (BuildContext context, int index) {
-          Card(
+         return Card(
             child: Container(
-              height: 500,
-              width: 450,
+              height: 300,
+              width: 250,
               decoration: BoxDecoration(
                   border: Border.all(
                   ),
@@ -32,8 +43,8 @@ class _TestState extends State<Test> {
               ),
               child: Column(
                 children: [
-                  Text("Name",style: TextStyle(fontSize: 20),),
-                  Text("Status",style: TextStyle(fontSize: 20),),
+                  Text(list[index].name!,style: TextStyle(fontSize: 20),),
+                  Text(list[index].status!,style: TextStyle(fontSize: 20),),
                 ],
               ),
             ),
